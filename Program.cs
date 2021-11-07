@@ -20,6 +20,7 @@ namespace TrueAsseTask
 
                 responce = Console.ReadLine().ToLower();
                 string name;
+                string Grade;
                 bool pass = false;
                 Console.Clear();
 
@@ -47,7 +48,7 @@ namespace TrueAsseTask
 
                             //Responces = name + Grade
 
-                            Console.WriteLine($"The students you want to add is {name.PadRight(10)} {Grades}");
+                            Console.WriteLine($"The students you want to add is {name.PadRight(5)} {Grades}");
                             //PadRight is using for user can see 
                             StudentsName.Add(name);
                             StudentsGrade.Add(Grades);
@@ -69,8 +70,7 @@ namespace TrueAsseTask
                 //remove students from the list
                 else if (responce == "b")
                 {
-
-                    while (pass != true)
+                    while(pass!=true)
                     {
                         //convenient for the users
                         try
@@ -81,6 +81,8 @@ namespace TrueAsseTask
                             int indexOFName = StudentsName.IndexOf(name);
                             StudentsName.RemoveAt(indexOFName);
                             StudentsGrade.RemoveAt(indexOFName);
+                            Console.WriteLine("The student has been deleted successfully (●’ω`●)");
+                            pass = true;
 
                         }
                         catch
@@ -95,8 +97,8 @@ namespace TrueAsseTask
                 else if (responce == "c")
 
                 {
-                    Console.WriteLine("Those are the students who got Certificate from Dean:");
-                    Console.WriteLine("\r\n");
+                    Console.WriteLine($"Those are the students who got Certificate from Dean:");
+                   
 
                     for (int i = 0; i < StudentsName.Count; i++)
                     {
@@ -173,7 +175,7 @@ namespace TrueAsseTask
 
                     responce = Console.ReadLine();
                     index = StudentsName.IndexOf(responce);
-                    Console.WriteLine($"{StudentsGrade[index]}");
+                    Console.WriteLine($"This student's Grade is:{StudentsGrade[index]}");
 
 
                 }
@@ -183,6 +185,7 @@ namespace TrueAsseTask
 
         private static void Menu()
         {
+            Console.WriteLine("-------------------------------------------------------------");
             Console.WriteLine("\r");
             Console.WriteLine("Please enter");
             Console.WriteLine("\r");
@@ -201,6 +204,7 @@ namespace TrueAsseTask
             Console.WriteLine("Press L to list all the students");
             Console.WriteLine("\r");
             Console.WriteLine("Press S to search the student you want");
+            Console.WriteLine("--------------------------------------------------------------");
         }
     }
 
