@@ -7,7 +7,7 @@ namespace TrueAsseTask
     {
         static void Main(string[] args)
         {
-
+            const int PadName = 20, Padcomm = 5;
 
             List<string> StudentsName = new List<string>() { "Amy Murry", "Ari Nikau", "Ben Mckay", "Claire McNaughton", "Harry Hamiton", "Liz Morrissey", "Rawiri Henry", "Sam Chen", "Taika Smith", "Tui Kahn" };
             List<int> StudentsGrade = new List<int>() { 8, 28, 17, 44, 109, 59, 78, 14, 97, 121 };
@@ -29,7 +29,7 @@ namespace TrueAsseTask
                 //adding students
                 if (responce == "a")
                 {
-                
+
                     //while loop it helps try catch the error and can run mutiple times autometicily to help the user correct their mistakes and get the data to the list correctly.                  
 
                     while (pass != true)
@@ -47,14 +47,15 @@ namespace TrueAsseTask
 
                             //Responces = name + Grade
 
-                            Console.WriteLine("The students you want to add is" + "\n" + name + "\n" + Grades);
+                            Console.WriteLine($"The students you want to add is {name.PadRight(10)} {Grades}");
+                            //PadRight is using for user can see 
                             StudentsName.Add(name);
                             StudentsGrade.Add(Grades);
                             Console.ReadKey();
 
                             pass = true;
                             Console.Clear();
-                            //working well
+
                         }
                         catch
                         {
@@ -63,20 +64,33 @@ namespace TrueAsseTask
                         }
                     }
                 }
+
+
                 //remove students from the list
                 else if (responce == "b")
-
                 {
-                    Console.WriteLine("Which student would you like to delete?");
-                    name = Console.ReadLine();
-                    //Store the index value that name is in the list
-                    int indexOfName = StudentsName.IndexOf(name);
 
-                    //responce
-                    
-                    StudentsName.RemoveAt(indexOfName);
-                    StudentsGrade.RemoveAt(indexOfName);
+                    while (pass != true)
+                    {
+                        //convenient for the users
+                        try
+                        {
+                            Console.WriteLine("Which student would you like to remove from the list?");
+                            name = Console.ReadLine();
+                            //store the index value that name is in the list
+                            int indexOFName = StudentsName.IndexOf(name);
+                            StudentsName.RemoveAt(indexOFName);
+                            StudentsGrade.RemoveAt(indexOFName);
+
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Ah oh it seems there's a mistake Σ( ° o °|||)\n");
+                        }
+                    }
                 }
+
+
                 //List the Certificate from dean
                 else if (responce == "c")
 
@@ -94,6 +108,8 @@ namespace TrueAsseTask
 
                     }
                 }
+
+
                 //List the Green Spirit badge
                 else if (responce == "d")
 
@@ -129,7 +145,7 @@ namespace TrueAsseTask
                 else if (responce == "f")
                 {
                     Console.WriteLine("Those are the students who got Gold spirit badge");
-                    Console.WriteLine("\r");
+
 
                     for (int i = 0; i < StudentsName.Count; i++)
                     {
@@ -144,7 +160,7 @@ namespace TrueAsseTask
                 {
                     for (int i = 0; i < StudentsName.Count; i++)
                     {
-                        Console.WriteLine(StudentsName[i] + " " + StudentsGrade[i]);
+                        Console.WriteLine(StudentsName[i].PadRight(PadName) + " " + StudentsGrade[i]);
                     }
 
                 }
