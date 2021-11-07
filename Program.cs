@@ -13,75 +13,58 @@ namespace TrueAsseTask
             List<int> StudentsGrade = new List<int>() { 8, 28, 17, 44, 109, 59, 78, 14, 97, 121 };
             string responce = "";
 
-
-
             //List of the StudentsName and StudentGrade 
             while (responce != "Q")
             {
-                Console.WriteLine("\r");
-                Console.WriteLine("Please enter");
-                Console.WriteLine("\r");
-                Console.WriteLine("Press A to enter a new stduent data to the system");
-                Console.WriteLine("\r");
-                Console.WriteLine("Press B to delete" + " a student data from the system");
-                Console.WriteLine("\r");
-                Console.WriteLine("Press C to list the student who got the Certificate from the Dean");
-                Console.WriteLine("\r");
-                Console.WriteLine("Press D to list the student who got the Green Spirit badge");
-                Console.WriteLine("\r");
-                Console.WriteLine("Press E to list the students who got the Blue Spirit badge");
-                Console.WriteLine("\r");
-                Console.WriteLine("Press F to list the students who got the Gold Spirit badge");
-                Console.WriteLine("\r");
-                Console.WriteLine("Press L to list all the students");
-                Console.WriteLine("\r");
-                Console.WriteLine("Press S to search the student you want");
+                Menu();
 
-
-                responce = Console.ReadLine();
+                responce = Console.ReadLine().ToLower();
                 string name;
+                bool pass = false;
                 Console.Clear();
 
                 // 25 – Certificate from the Dean, 50 – Green Spirit badge, 100 – Blue Spirit badge, 150 – Gold Spirit badge
 
-                if (responce == "A" || responce == "a")
 
-                    //convenient for the users
-                    try
+                //adding students
+                if (responce == "a")
+                {
+                
+                    //while loop it helps try catch the error and can run mutiple times autometicily to help the user correct their mistakes and get the data to the list correctly.                  
+
+                    while (pass != true)
                     {
-                        Console.WriteLine("Please enter the name of the student");
-                        name = Console.ReadLine();
-                        Console.WriteLine("Please enter the Grade of this student");
-                        int Grades = Convert.ToInt32(Console.ReadLine());
-                        //Responces = name + Grade
-                        StudentsName.Add(name);
-                        StudentsGrade.Add(Grades);
-                        Console.WriteLine("The students you want to add is" + "\n" + name + "\n" + Grades);
-                        Console.Clear();
-                        //working well
+                        //convenient for the users
+                        try
+                        {
+                            Console.WriteLine("Please enter the name of the student");
+                            name = Console.ReadLine();
+
+                            Console.WriteLine("Please enter the Grade of this student");
+                            int Grades = Convert.ToInt32(Console.ReadLine());
+
+
+
+                            //Responces = name + Grade
+
+                            Console.WriteLine("The students you want to add is" + "\n" + name + "\n" + Grades);
+                            StudentsName.Add(name);
+                            StudentsGrade.Add(Grades);
+                            Console.ReadKey();
+
+                            pass = true;
+                            Console.Clear();
+                            //working well
+                        }
+                        catch
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Ah oh it seems there's a mistake Σ( ° o °|||)\n");
+                        }
                     }
-                    catch
-                    {
-                        Console.WriteLine("Ah oh it seems there's a mistake Σ( ° o °|||)\n");
-                    }
-
-                    finally
-                    {
-                        Console.WriteLine("Sorry please enter the data again\n");
-                        Console.WriteLine("Please enter the name of the student");
-                        name = Console.ReadLine();
-                        Console.WriteLine("Please enter the Grade of this student");
-                        int Grades = Convert.ToInt32(Console.ReadLine());
-                        //Responces = name + Grade
-                        StudentsName.Add(name);
-                        StudentsGrade.Add(Grades);
-                        Console.WriteLine("The students you want to add is" + "\n" + name + "\n" + Grades);
-                        //working well
-                    }
-
-
-
-                else if (responce == "B" || responce == "b")
+                }
+                //remove students from the list
+                else if (responce == "b")
 
                 {
                     Console.WriteLine("Which student would you like to delete?");
@@ -90,12 +73,12 @@ namespace TrueAsseTask
                     int indexOfName = StudentsName.IndexOf(name);
 
                     //responce
+                    
                     StudentsName.RemoveAt(indexOfName);
                     StudentsGrade.RemoveAt(indexOfName);
                 }
-
-
-                else if (responce == "C" || responce == "c")
+                //List the Certificate from dean
+                else if (responce == "c")
 
                 {
                     Console.WriteLine("Those are the students who got Certificate from Dean:");
@@ -111,10 +94,8 @@ namespace TrueAsseTask
 
                     }
                 }
-
-
-
-                else if (responce == "D" || responce == "d")
+                //List the Green Spirit badge
+                else if (responce == "d")
 
                 {
                     Console.WriteLine("Those are the students who got green spirit badge:");
@@ -130,8 +111,8 @@ namespace TrueAsseTask
 
                     }
                 }
-
-                else if (responce == "E" || responce == "e")
+                //List the blue Spirit badge
+                else if (responce == "e")
                 {
                     Console.WriteLine("Those are the students who got Blue Spirit Badge");
                     Console.WriteLine("\r");
@@ -144,8 +125,8 @@ namespace TrueAsseTask
                         }
                     }
                 }
-
-                else if (responce == "F" || responce == "f")
+                //List the Gold Spirit badge
+                else if (responce == "f")
                 {
                     Console.WriteLine("Those are the students who got Gold spirit badge");
                     Console.WriteLine("\r");
@@ -158,17 +139,8 @@ namespace TrueAsseTask
                         }
                     }
                 }
-
-                else if (responce == "S" || responce == "s")
-                {
-                    Console.WriteLine("Enter the name of the student you want to search");
-                    Console.WriteLine("\r");
-
-
-                }
-
-
-                else if (responce == "L" || responce == "l")
+                //List all the student in the list
+                else if (responce == "l")
                 {
                     for (int i = 0; i < StudentsName.Count; i++)
                     {
@@ -176,8 +148,43 @@ namespace TrueAsseTask
                     }
 
                 }
+                //Search the excact Student user want
+                else if (responce == "s")
+                {
+                    int index;
+                    Console.WriteLine("Enter the name of the student you want to search");
+                    Console.WriteLine("\r");
+
+                    responce = Console.ReadLine();
+                    index = StudentsName.IndexOf(responce);
+                    Console.WriteLine($"{StudentsGrade[index]}");
+
+
+                }
             }
-            Console.WriteLine("Happy day");
+            Console.WriteLine("Happy day"); 
+        }
+
+        private static void Menu()
+        {
+            Console.WriteLine("\r");
+            Console.WriteLine("Please enter");
+            Console.WriteLine("\r");
+            Console.WriteLine("Press A to enter a new stduent data to the system");
+            Console.WriteLine("\r");
+            Console.WriteLine("Press B to delete" + " a student data from the system");
+            Console.WriteLine("\r");
+            Console.WriteLine("Press C to list the student who got the Certificate from the Dean");
+            Console.WriteLine("\r");
+            Console.WriteLine("Press D to list the student who got the Green Spirit badge");
+            Console.WriteLine("\r");
+            Console.WriteLine("Press E to list the students who got the Blue Spirit badge");
+            Console.WriteLine("\r");
+            Console.WriteLine("Press F to list the students who got the Gold Spirit badge");
+            Console.WriteLine("\r");
+            Console.WriteLine("Press L to list all the students");
+            Console.WriteLine("\r");
+            Console.WriteLine("Press S to search the student you want");
         }
     }
 
