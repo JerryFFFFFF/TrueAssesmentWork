@@ -13,6 +13,7 @@ namespace TrueAsseTask
             List<string> StudentsName = new List<string>() { "Amy Murry", "Ari Nikau", "Ben Mckay", "Claire McNaughton", "Harry Hamiton", "Liz Morrissey", "Rawiri Henry", "Sam Chen", "Taika Smith", "Tui Kahn" };
             List<int> StudentsGrade = new List<int>() { 8, 28, 17, 44, 109, 59, 78, 14, 97, 121 };
             string responce = "";
+            int ChangeGrade;
 
             //List of the StudentsName and StudentGrade 
             while (responce != "Q")
@@ -24,6 +25,7 @@ namespace TrueAsseTask
                 string Grade;
                 bool pass = false;
                 Console.Clear();
+
 
                 // 25 – Certificate from the Dean, 50 – Green Spirit badge, 100 – Blue Spirit badge, 150 – Gold Spirit badge
 
@@ -71,7 +73,7 @@ namespace TrueAsseTask
                 //remove students from the list
                 else if (responce == "b")
                 {
-                    
+
                     {
                         //convenient for the users
                         try
@@ -88,26 +90,32 @@ namespace TrueAsseTask
                             StudentsGrade.RemoveAt(indexOFName);
                             Console.WriteLine("The student has been deleted successfully (●’ω`●)");
                             pass = true;
-                            
+
 
                         }
                         catch
                         {
                             Console.WriteLine("Ah oh it seems there's a mistake Σ( ° o °|||)\n");
                             Console.WriteLine("TIPS:You can check the list before you remove the student");
-                           
-                          
+
+
                         }
                     }
                 }
 
 
+
+
+
+
+
+
                 //List the Certificate from dean
-                else if (responce == "c")x
+                else if (responce == "c")
 
                 {
                     Console.WriteLine($"Those are the students who got Certificate from Dean:");
-                   
+
 
                     for (int i = 0; i < StudentsName.Count; i++)
                     {
@@ -165,7 +173,19 @@ namespace TrueAsseTask
                             Console.WriteLine(StudentsName[i] + "" + StudentsGrade[i]);
                         }
                     }
-                }x
+                }
+
+
+                
+
+
+
+
+
+
+
+
+
                 //List all the student in the list
                 else if (responce == "l")
                 {
@@ -185,16 +205,50 @@ namespace TrueAsseTask
                     responce = Console.ReadLine();
                     index = StudentsName.IndexOf(responce);
                     Console.WriteLine($"This student's Grade is:{StudentsGrade[index]}");
-
-
                 }
-
-                else if (responce == "t")
+                else if (responce == "r")
                 {
+                    while((pass != true))
+                    {
+                        try
+                        {
 
+
+                        
+                        
+                        }
+
+
+
+                    for (int i = 0; i < StudentsName.Count; i++)
+                    {
+                        Console.WriteLine(StudentsName[i] + " " + StudentsGrade[i]);
+
+                    }
+                    Console.WriteLine("Which student's grade would you like to change?");
+                    responce = Console.ReadLine();
+
+                    int index = StudentsName.IndexOf(responce);
+
+                    StudentsName.Add(responce);
+
+                    StudentsName.RemoveAt(index);
+
+                    StudentsGrade.RemoveAt(index);
+                    Console.WriteLine("What is the new grade for this student?");
+
+
+                    ChangeGrade = Convert.ToInt32(Console.ReadLine());
+                    StudentsGrade.Add(ChangeGrade);
+                    catch
+                        {
+
+                        }
 
 
                 }
+
+
             }
             Console.WriteLine("Happy day"); 
         }
