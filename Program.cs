@@ -241,9 +241,11 @@ namespace TrueAsseTask
                     ChangeGrade = Convert.ToInt32(Console.ReadLine());
                     StudentsGrade.Add(ChangeGrade);
                     catch
-                        {
+                    {
 
-                        }
+                    
+                        
+                    }
 
 
                 }
