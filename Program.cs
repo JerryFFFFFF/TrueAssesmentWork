@@ -6,6 +6,7 @@ namespace TrueAsseTask
     class Program
     {
         static void Main(string[] args)
+
         {
             const int PadName = 20, Padcomm = 5;
 
@@ -70,12 +71,16 @@ namespace TrueAsseTask
                 //remove students from the list
                 else if (responce == "b")
                 {
-                    while(pass!=true)
+                    
                     {
                         //convenient for the users
                         try
                         {
                             Console.WriteLine("Which student would you like to remove from the list?");
+                            for (int i = 0; i < StudentsName.Count; i++)
+                            {
+                                Console.WriteLine(StudentsName[i].PadRight(PadName) + " " + StudentsGrade[i]);
+                            }
                             name = Console.ReadLine();
                             //store the index value that name is in the list
                             int indexOFName = StudentsName.IndexOf(name);
@@ -83,18 +88,22 @@ namespace TrueAsseTask
                             StudentsGrade.RemoveAt(indexOFName);
                             Console.WriteLine("The student has been deleted successfully (●’ω`●)");
                             pass = true;
+                            
 
                         }
                         catch
                         {
                             Console.WriteLine("Ah oh it seems there's a mistake Σ( ° o °|||)\n");
+                            Console.WriteLine("TIPS:You can check the list before you remove the student");
+                           
+                          
                         }
                     }
                 }
 
 
                 //List the Certificate from dean
-                else if (responce == "c")
+                else if (responce == "c")x
 
                 {
                     Console.WriteLine($"Those are the students who got Certificate from Dean:");
@@ -156,7 +165,7 @@ namespace TrueAsseTask
                             Console.WriteLine(StudentsName[i] + "" + StudentsGrade[i]);
                         }
                     }
-                }
+                }x
                 //List all the student in the list
                 else if (responce == "l")
                 {
@@ -176,6 +185,13 @@ namespace TrueAsseTask
                     responce = Console.ReadLine();
                     index = StudentsName.IndexOf(responce);
                     Console.WriteLine($"This student's Grade is:{StudentsGrade[index]}");
+
+
+                }
+
+                else if (responce == "t")
+                {
+
 
 
                 }
