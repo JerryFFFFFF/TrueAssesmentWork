@@ -176,7 +176,7 @@ namespace TrueAsseTask
                 }
 
 
-                
+
 
 
 
@@ -196,6 +196,8 @@ namespace TrueAsseTask
 
                 }
                 //Search the excact Student user want
+
+
                 else if (responce == "s")
                 {
                     int index;
@@ -206,49 +208,54 @@ namespace TrueAsseTask
                     index = StudentsName.IndexOf(responce);
                     Console.WriteLine($"This student's Grade is:{StudentsGrade[index]}");
                 }
-                else if (responce == "r")
+
+                if (responce == "r")
                 {
-                    while((pass != true))
+                    while (pass != true)
                     {
+                      
                         try
                         {
+                            for (int i = 0; i < StudentsName.Count; i++)
+                            {
+                                Console.WriteLine(StudentsName[i] + " " + StudentsGrade[i]+"\n");
 
+                            }
+                            Console.WriteLine("Which student's grade would you like to change?\n");
+                            responce = Console.ReadLine();
+                            int index = StudentsName.IndexOf(responce);
+                           ////////////////////////////////////////////
+                            StudentsName.Add(responce);
+                            StudentsName.RemoveAt(index);
+                            StudentsGrade.RemoveAt(index);
+                            Console.WriteLine("What is the new grade for this student?\n");
+                            ChangeGrade = Convert.ToInt32(Console.ReadLine());
+                            StudentsGrade.Add(ChangeGrade);
 
-                        
-                        
+                            pass = true;
+                            Console.Clear();
+
                         }
-
-
-
-                    for (int i = 0; i < StudentsName.Count; i++)
-                    {
-                        Console.WriteLine(StudentsName[i] + " " + StudentsGrade[i]);
-
+                        catch
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Ah oh it seems there's a mistake o(TヘTo)\n");
+                            pass = true;
+                            
+                        }
                     }
-                    Console.WriteLine("Which student's grade would you like to change?");
-                    responce = Console.ReadLine();
-
-                    int index = StudentsName.IndexOf(responce);
-
-                    StudentsName.Add(responce);
-
-                    StudentsName.RemoveAt(index);
-
-                    StudentsGrade.RemoveAt(index);
-                    Console.WriteLine("What is the new grade for this student?");
-
-
-                    ChangeGrade = Convert.ToInt32(Console.ReadLine());
-                    StudentsGrade.Add(ChangeGrade);
-                    catch
-                    {
-
-                    
-                        
-                    }
-
-
                 }
+
+
+
+
+
+
+
+
+
+
+
 
 
             }
@@ -276,6 +283,8 @@ namespace TrueAsseTask
             Console.WriteLine("Press L to list all the students");
             Console.WriteLine("\r");
             Console.WriteLine("Press S to search the student you want");
+            Console.WriteLine("\r");
+            Console.WriteLine("Press R to renew one of the student's grade");
             Console.WriteLine("--------------------------------------------------------------");
         }
     }
