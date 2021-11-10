@@ -17,9 +17,8 @@ namespace TrueAsseTask
 
 
             //List of the StudentsName and StudentGrade 
-            while (responce != "Q")
+            while (responce != "q")
             {
-                
                 Menu();
 
                 responce = Console.ReadLine().ToLower();
@@ -77,34 +76,36 @@ namespace TrueAsseTask
                 {
 
                     {
-                        //convenient for the users
-                        try
-                       // For handle the break from the error of the code
-                        {
-                            Console.WriteLine("Which student would you like to remove from the list?");
-                            for (int i = 0; i < StudentsName.Count; i++)
+                        while (pass != true)
+                                //convenient for the users
+                            try
+                                // For handle the break from the error of the code
+                            {
+                                Console.WriteLine("Which student would you like to remove from the list?");
+                                for (int i = 0; i < StudentsName.Count; i++)
                             {
                                 Console.WriteLine(StudentsName[i].PadRight(PadName) + " " + StudentsGrade[i]);
                             }
-                            name = Console.ReadLine();
-                            //store the index value that name is in the list
-                            int indexOFName = StudentsName.IndexOf(name);
-                            StudentsName.RemoveAt(indexOFName);
-                            StudentsGrade.RemoveAt(indexOFName);
-                            Console.WriteLine("The student has been deleted successfully (●’ω`●)");
-                            Console.ReadKey();
-                            pass = true;
+                                name = Console.ReadLine();
+                                //store the index value that name is in the list
+                                int indexOFName = StudentsName.IndexOf(name);
+                                StudentsName.RemoveAt(indexOFName);
+                                StudentsGrade.RemoveAt(indexOFName);
+                                Console.WriteLine("The student has been deleted successfully (∩_∩)");
+                                Console.ReadKey();
+                                pass = true;
 
 
-                        }
-                        catch
-                        //Link with the try and give callback to the error that user made 
-                        {
-                            Console.WriteLine("Ah oh it seems there's a mistake Σ( ° o °|||)\n");
-                            Console.WriteLine("TIPS:You can check the list before you remove the student");
+                            }
+                          catch
+                               //Link with the try and give callback to the error that user made 
+                            {
+                               Console.WriteLine("Ah oh it seems there's a mistake Σ( ° o °|||)\n");
+                               Console.WriteLine("TIPS:You can check the list before you remove the student");
+      
 
 
-                        }
+                            }
                     }
                 }
 
@@ -136,7 +137,8 @@ namespace TrueAsseTask
                 {
                     Console.Clear();
                     badge(StudentsName, StudentsGrade,100,"Blue Badge");
-                    Console.WriteLine("\n");  
+                    Console.ReadLine();
+                     
                 }
                 
                 
@@ -145,22 +147,25 @@ namespace TrueAsseTask
                 {
                     Console.Clear();
                     badge(StudentsName, StudentsGrade, 150, "Gold Badge");
-                    Console.WriteLine("\n");
+                    Console.ReadLine();
+
                 }
 
-                
                 else if (responce == "l")
                 //List all the student in the list
                 {
+                    Console.WriteLine("Those are the students we got so far:");
                     for (int i = 0; i < StudentsName.Count; i++)
                     {
                         Console.WriteLine(StudentsName[i].PadRight(PadName) + " " + StudentsGrade[i]);
+                       
                     }
+                    Console.ReadLine();
 
                 }
+                
+                
                 //Search the excact Student user want
-
-
                 else if (responce == "s")
                     //For the users to search the grade of those students who is in the list
                 {
@@ -183,9 +188,7 @@ namespace TrueAsseTask
                 if (responce == "r")
                     //For update the grade of those students who already in the list.
                 {
-               
-                    
-                      
+                    while(pass!=true)
                         try
                         {
                             for (int i = 0; i < StudentsName.Count; i++)
@@ -200,28 +203,26 @@ namespace TrueAsseTask
                             StudentsName.Add(responce);
                             StudentsName.RemoveAt(index);
                             StudentsGrade.RemoveAt(index);
+                        //for update the student's grade: remove first than enter the new one
                             Console.WriteLine("What is the new grade for this student?\n");
                             ChangeGrade = Convert.ToInt32(Console.ReadLine());
                             StudentsGrade.Add(ChangeGrade);
-                            
-
+                            pass = true;
                         }
                         catch
                         {
                             Console.WriteLine("Ah oh it seems there's a mistake o(TヘTo)\n");
-                            
-                            
                         }
                     
                 }
+
             }
-            Console.WriteLine("Happy day"); 
+            Console.WriteLine("Have a Happy day"); 
         }
         private static void Menu()
         {
             Console.Clear();
             Console.WriteLine("-------------------------------------------------------------");
-            Console.WriteLine("\r");
             Console.WriteLine("Please enter");
             Console.WriteLine("\r");
             Console.WriteLine("Press A to enter a new stduent data to the system");
