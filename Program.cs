@@ -15,6 +15,7 @@ namespace TrueAsseTask
             string responce = "";
             int ChangeGrade;
 
+
             //List of the StudentsName and StudentGrade 
             while (responce != "Q")
             {
@@ -103,37 +104,17 @@ namespace TrueAsseTask
                     }
                 }
 
-
-
-
-
-               
-
-
-
-
-
+                // 25 – Certificate from the Dean, 50 – Green Spirit badge, 100 – Blue Spirit badge, 150 – Gold Spirit badge
                 //List the Certificate from dean
+
                 else if (responce == "c")
 
                 {
-                   static void Main(string[]args)
-                    {
-                        List<int> Student
-                    }
+                    Console.Clear();
+                    badge(StudentsName, StudentsGrade, 25, "certificate");
+                    Console.ReadLine();
 
-
-                    for (int i = 0; i < StudentsName.Count; i++)
-                    {
-                        if (StudentsGrade[i] >= 25)
-                        {
-                            Console.WriteLine(StudentsName[i] + " " + StudentsGrade[i]);
-
-                        }
-
-                    }
                 }
-
 
                 //List the Green Spirit badge
                 else if (responce == "d")
@@ -251,23 +232,9 @@ namespace TrueAsseTask
                         }
                     }
                 }
-
-
-
-
-
-
-
-
-
-
-
-
-
             }
             Console.WriteLine("Happy day"); 
         }
-
         private static void Menu()
         {
             Console.WriteLine("-------------------------------------------------------------");
@@ -293,6 +260,31 @@ namespace TrueAsseTask
             Console.WriteLine("Press R to renew one of the student's grade");
             Console.WriteLine("--------------------------------------------------------------");
         }
+       
+        
+        static void badge(List<string> StudentName, List<int> Studentscommn, int standard, string award)
+        {
+            Console.WriteLine($"those are the students who got{award} from the dean");
+            for (int i = 0; i < Studentscommn.Count; i++)
+            {
+                if (Studentscommn[i] >= standard)
+                {
+                    Console.WriteLine(Studentscommn[i] + " " + StudentName[i]);
+
+                }
+
+            }
+
+
+
+
+
+
+
+
+        }
+
     }
 
 }
+
