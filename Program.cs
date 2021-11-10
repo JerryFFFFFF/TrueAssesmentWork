@@ -107,6 +107,9 @@ namespace TrueAsseTask
 
 
 
+               
+
+
 
 
 
@@ -114,7 +117,10 @@ namespace TrueAsseTask
                 else if (responce == "c")
 
                 {
-                    Console.WriteLine($"Those are the students who got Certificate from Dean:");
+                   static void Main(string[]args)
+                    {
+                        List<int> Student
+                    }
 
 
                     for (int i = 0; i < StudentsName.Count; i++)
