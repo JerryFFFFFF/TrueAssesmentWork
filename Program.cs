@@ -19,6 +19,7 @@ namespace TrueAsseTask
             //List of the StudentsName and StudentGrade 
             while (responce != "Q")
             {
+                
                 Menu();
 
                 responce = Console.ReadLine().ToLower();
@@ -78,6 +79,7 @@ namespace TrueAsseTask
                     {
                         //convenient for the users
                         try
+                       // For handle the break from the error of the code
                         {
                             Console.WriteLine("Which student would you like to remove from the list?");
                             for (int i = 0; i < StudentsName.Count; i++)
@@ -90,11 +92,13 @@ namespace TrueAsseTask
                             StudentsName.RemoveAt(indexOFName);
                             StudentsGrade.RemoveAt(indexOFName);
                             Console.WriteLine("The student has been deleted successfully (●’ω`●)");
+                            Console.ReadKey();
                             pass = true;
 
 
                         }
                         catch
+                        //Link with the try and give callback to the error that user made 
                         {
                             Console.WriteLine("Ah oh it seems there's a mistake Σ( ° o °|||)\n");
                             Console.WriteLine("TIPS:You can check the list before you remove the student");
@@ -105,76 +109,48 @@ namespace TrueAsseTask
                 }
 
                 // 25 – Certificate from the Dean, 50 – Green Spirit badge, 100 – Blue Spirit badge, 150 – Gold Spirit badge
-                //List the Certificate from dean
 
+                //From c start using the method for the certificate
                 else if (responce == "c")
-
+                //List the Certificate from dean
+               
                 {
                     Console.Clear();
-                    badge(StudentsName, StudentsGrade, 25, "certificate");
+                    badge(StudentsName, StudentsGrade, 25, "Certificate from the Dean");
                     Console.ReadLine();
-
                 }
 
-                //List the Green Spirit badge
+               
                 else if (responce == "d")
-
+                //List the Green Spirit badge
                 {
-                    Console.WriteLine("Those are the students who got green spirit badge:");
-                    Console.WriteLine("\r\n");
-
-                    for (int i = 0; i < StudentsName.Count; i++)
-                    {
-                        if (StudentsGrade[i] >= 50)
-                        {
-                            Console.WriteLine(StudentsName[i] + " " + StudentsGrade[i]);
-
-                        }
-
-                    }
+                    Console.Clear();
+                    badge(StudentsName, StudentsGrade, 50, "Green Badge");
+                    Console.ReadLine();
+                   
                 }
-                //List the blue Spirit badge
+             
+                
                 else if (responce == "e")
+                //List the blue Spirit badge
                 {
-                    Console.WriteLine("Those are the students who got Blue Spirit Badge");
-                    Console.WriteLine("\r");
-
-                    for (int i = 0; i < StudentsName.Count; i++)
-                    {
-                        if (StudentsGrade[i] >= 100)
-                        {
-                            Console.WriteLine(StudentsName[i] + "" + StudentsGrade[i]);
-                        }
-                    }
+                    Console.Clear();
+                    badge(StudentsName, StudentsGrade,100,"Blue Badge");
+                    Console.WriteLine("\n");  
                 }
-                //List the Gold Spirit badge
+                
+                
                 else if (responce == "f")
+                //List the Gold Spirit badge
                 {
-                    Console.WriteLine("Those are the students who got Gold spirit badge");
-
-
-                    for (int i = 0; i < StudentsName.Count; i++)
-                    {
-                        if (StudentsGrade[i] >= 150)
-                        {
-                            Console.WriteLine(StudentsName[i] + "" + StudentsGrade[i]);
-                        }
-                    }
+                    Console.Clear();
+                    badge(StudentsName, StudentsGrade, 150, "Gold Badge");
+                    Console.WriteLine("\n");
                 }
 
-
-
-
-
-
-
-
-
-
-
-
-                //List all the student in the list
+                
                 else if (responce == "l")
+                //List all the student in the list
                 {
                     for (int i = 0; i < StudentsName.Count; i++)
                     {
@@ -186,20 +162,29 @@ namespace TrueAsseTask
 
 
                 else if (responce == "s")
+                    //For the users to search the grade of those students who is in the list
                 {
-                    int index;
-                    Console.WriteLine("Enter the name of the student you want to search");
-                    Console.WriteLine("\r");
+                    try
+                    {
+                        int index;
+                        Console.WriteLine("Enter the name of the student you want to search");
+                        Console.WriteLine("\r");
+                        responce = Console.ReadLine();
+                        index = StudentsName.IndexOf(responce);
+                        Console.WriteLine($"This student's Grade is:{StudentsGrade[index]}");
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Oh sorry The student does not exist (>_<)");
 
-                    responce = Console.ReadLine();
-                    index = StudentsName.IndexOf(responce);
-                    Console.WriteLine($"This student's Grade is:{StudentsGrade[index]}");
+                    }
                 }
 
                 if (responce == "r")
+                    //For update the grade of those students who already in the list.
                 {
-                    while (pass != true)
-                    {
+               
+                    
                       
                         try
                         {
@@ -218,25 +203,23 @@ namespace TrueAsseTask
                             Console.WriteLine("What is the new grade for this student?\n");
                             ChangeGrade = Convert.ToInt32(Console.ReadLine());
                             StudentsGrade.Add(ChangeGrade);
-
-                            pass = true;
-                            Console.Clear();
+                            
 
                         }
                         catch
                         {
-                            Console.Clear();
                             Console.WriteLine("Ah oh it seems there's a mistake o(TヘTo)\n");
-                            pass = true;
+                            
                             
                         }
-                    }
+                    
                 }
             }
             Console.WriteLine("Happy day"); 
         }
         private static void Menu()
         {
+            Console.Clear();
             Console.WriteLine("-------------------------------------------------------------");
             Console.WriteLine("\r");
             Console.WriteLine("Please enter");
@@ -260,27 +243,19 @@ namespace TrueAsseTask
             Console.WriteLine("Press R to renew one of the student's grade");
             Console.WriteLine("--------------------------------------------------------------");
         }
-       
-        
+
+
         static void badge(List<string> StudentName, List<int> Studentscommn, int standard, string award)
         {
-            Console.WriteLine($"those are the students who got{award} from the dean");
+            Console.WriteLine($"Those are the students who got {award} :\n");
             for (int i = 0; i < Studentscommn.Count; i++)
             {
                 if (Studentscommn[i] >= standard)
                 {
                     Console.WriteLine(Studentscommn[i] + " " + StudentName[i]);
-
                 }
-
             }
-
-
-
-
-
-
-
+            //method link with the else if options(spirit badges)
 
         }
 
