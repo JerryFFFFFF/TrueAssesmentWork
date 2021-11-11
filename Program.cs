@@ -82,20 +82,22 @@ namespace TrueAsseTask
                                 // For handle the break from the error of the code
                             {
                                 Console.WriteLine("Which student would you like to remove from the list?");
-                                for (int i = 0; i < StudentsName.Count; i++)
-                            {
-                                Console.WriteLine(StudentsName[i].PadRight(PadName) + " " + StudentsGrade[i]);
-                            }
-                                name = Console.ReadLine();
-                                //store the index value that name is in the list
-                                int indexOFName = StudentsName.IndexOf(name);
-                                StudentsName.RemoveAt(indexOFName);
-                                StudentsGrade.RemoveAt(indexOFName);
-                                Console.WriteLine("The student has been deleted successfully (∩_∩)");
-                                Console.ReadKey();
-                                pass = true;
+                                
 
+                                {
 
+                                  
+
+                                    name = Console.ReadLine();
+                                    //store the index value that name is in the list
+                                    int indexOFName = StudentsName.IndexOf(name);
+                                    StudentsName.RemoveAt(indexOFName);
+                                    StudentsGrade.RemoveAt(indexOFName);
+                                    Console.WriteLine("The student has been deleted successfully (∩_∩)");
+                                    Console.ReadKey();
+                                    pass = true;
+
+                                }
                             }
                           catch
                                //Link with the try and give callback to the error that user made 
@@ -155,7 +157,7 @@ namespace TrueAsseTask
                 //List all the student in the list
                 {
                     Console.Clear();
-                    studentlist(StudentsName, StudentsGrade,);
+                    studentlist(StudentsName, StudentsGrade,1,"number");
                     Console.ReadLine();
 
                 }
