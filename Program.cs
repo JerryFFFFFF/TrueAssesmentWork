@@ -21,9 +21,9 @@ namespace TrueAsseTask
 
             //List of the StudentsName and StudentGrade 
             while (response != "q")
+                //This while loop helped to the option repeat by itself instead of user quit every singlte
             {
                 Menu();
-
                 response = Console.ReadLine().ToLower();
                 //ToLower helped the capital letter into lower word and that makes me do not need to write "response= CAPITAL" everytime
                 string name;
@@ -40,18 +40,17 @@ namespace TrueAsseTask
                     //while loop it helps try catch the error and can run mutiple times autometicily to help the user correct their mistakes and get the data to the list correctly.                  
 
                     while (pass != true)
+                        //to run the option multiple times automaticily
                     {
                         //convenient for the users
                         try
+                        // The code inside of try is ready for "catch" to catch the code if there's an error. 
                         {
                             Console.WriteLine("Please enter the name of the student");
                             name = Console.ReadLine();
 
                             Console.WriteLine("Please enter the Grade of this student");
                             int Grades = Convert.ToInt32(Console.ReadLine());
-
-
-
                             //Responces = name + Grade
 
                             Console.WriteLine($"The students you want to add is {name.PadRight(5)} {Grades}");
@@ -61,10 +60,12 @@ namespace TrueAsseTask
                             Console.ReadKey();
 
                             pass = true;
+                            //for stop the while loop
                             Console.Clear();
 
                         }
                         catch
+                        //to catch the error in “try” 
                         {
                             Console.Clear();
                             Console.WriteLine("Ah oh it seems there's a mistake Σ( ° o °|||)\n");
