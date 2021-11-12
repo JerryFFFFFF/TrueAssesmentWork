@@ -34,7 +34,7 @@ namespace TrueAsseTask
 
 
                 //adding students
-                if (response == "a")
+                if (response == "a" || response == "1")
                 {
 
                     //while loop it helps try catch the error and can run mutiple times autometicily to help the user correct their mistakes and get the data to the list correctly.                  
@@ -75,7 +75,7 @@ namespace TrueAsseTask
 
 
                 //remove students from the list
-                else if (response == "b")
+                else if (response == "b" || response == "2")
                 {
                     Console.Clear();
                     {
@@ -112,7 +112,7 @@ namespace TrueAsseTask
                 // 25 – Certificate from the Dean, 50 – Green Spirit badge, 100 – Blue Spirit badge, 150 – Gold Spirit badge
 
                 //From c start using the method for the certificate
-                else if (response == "c")
+                else if (response == "c" || response == "3")
                 //List the Certificate from dean
                
                 {
